@@ -1,0 +1,15 @@
+[package]
+name = "tiny_cli_chat"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+
+[[bin]]
+name = "cli_chat_server"
+path = "src/server_main.rs"
+
+[[bin]]
+name = "cli_chat_client"
+path = "src/client_main.rs"
