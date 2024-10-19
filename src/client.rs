@@ -50,8 +50,13 @@ fn handle_user_input(mut stream: TcpStream, tx: Sender<String>) {
         }
 
         // Send the message to the server
-        if let Err(e) = stream.write_all(trimmed.as_bytes()) {
+        if let Err(e) = stream.write_all(format!("{}\n", trimmed).as_bytes()) {
             eprintln!("Failed to send the message: {}", e);
+            break;
+        }
+
+        if let Err(e) = stream.flush() {
+            eprintln!("Failed to flush stream: {}", e);
             break;
         }
     }
